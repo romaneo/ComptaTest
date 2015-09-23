@@ -53,8 +53,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="PointTests\Point1D_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Compta.Core\Compta.Core.csproj">
+      <Project>{5c8fb74d-399b-4cb7-9ec5-df3a3ae3c5c3}</Project>
+      <Name>Compta.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Compta\Compta.csproj">
+      <Project>{5536f2dc-fd3e-4da9-9a34-66c7c7e8ad2c}</Project>
+      <Name>Compta</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

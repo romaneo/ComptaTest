@@ -41,5 +41,10 @@ namespace Compta.Core.Models.Point
             _x = default(T);
         } 
         #endregion
+
+        public override string ToString()
+        {
+            return String.Format("1D point: (x: {0})", X);
+        }
     }
 }

@@ -80,5 +80,10 @@ namespace Compta.Core.Models.Point
             _z = default(T);
         } 
         #endregion
+
+        public override string ToString()
+        {
+            return String.Format("3D point: (x: {0}; y: {1}; z: {2})", X, Y, Z);
+        }
     }
 }
