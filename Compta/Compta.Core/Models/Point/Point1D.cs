@@ -8,10 +8,11 @@ namespace Compta.Core.Models.Point
     public class Point1D<T> : IPoint
     {
 
+        #region X property
         private T _x;
 
         /// <summary>
-        /// Represent single numerical value
+        /// Gets the single coordinate of this 1D point
         /// </summary>
         public T X
         {
@@ -19,7 +20,10 @@ namespace Compta.Core.Models.Point
             {
                 return _x;
             }
-        }
+        } 
+        #endregion
+
+        #region Constructors
         /// <summary>
         /// Initialize a new instance of the 1D point
         /// </summary>
@@ -35,6 +39,7 @@ namespace Compta.Core.Models.Point
         public Point1D()
         {
             _x = default(T);
-        }
+        } 
+        #endregion
     }
 }
