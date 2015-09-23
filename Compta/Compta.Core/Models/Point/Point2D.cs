@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Compta.Core.Models.Point
 {
-    class Point2D<T> : IPoint
+    public class Point2D<T> : IPoint
     {
         #region X property
         private T _x;
@@ -57,6 +57,7 @@ namespace Compta.Core.Models.Point
         public Point2D()
         {
             _x = default(T);
+            _y = default(T);
         } 
         #endregion
     }
