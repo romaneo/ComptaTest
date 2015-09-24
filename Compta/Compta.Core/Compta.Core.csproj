@@ -39,12 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Point\IPoint.cs" />
-    <Compile Include="Models\Point\Point1D.cs" />
-    <Compile Include="Models\Point\Point2D.cs" />
-    <Compile Include="Models\Point\Point3D.cs" />
+    <Compile Include="Models\Containers\Container.cs" />
+    <Compile Include="Models\Containers\Containers.cs" />
+    <Compile Include="Models\Containers\IContainer.cs" />
+    <Compile Include="Models\Containers\Matrix.cs" />
+    <Compile Include="Models\Containers\Position.cs" />
+    <Compile Include="Models\Points\IPoint.cs" />
+    <Compile Include="Models\Points\Point1D.cs" />
+    <Compile Include="Models\Points\Point2D.cs" />
+    <Compile Include="Models\Points\Point3D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

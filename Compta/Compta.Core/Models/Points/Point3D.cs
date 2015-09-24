@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Compta.Core.Models.Point
 {
-    public class Point3D<T>
+    public class Point3D<T> : IPoint
     {
         #region X property
         private T _x;
