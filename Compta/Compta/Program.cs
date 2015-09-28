@@ -12,87 +12,102 @@ namespace Compta
 {
     class Program
     {
-        public static List<T> CreateListOfPoint<T>(int count) where T:IPoint
+        public static List<T> CreateListOfPoint<T>(int count) where T : IPoint
         {
             List<T> t = new List<T>();
             for (int i = 0; i < count; i++)
             {
-                t.Add(default(T));
+                t.Add((T)Activator.CreateInstance(typeof(T)));
             }
             return t;
         }
 
+        public static Matrix<IContainer> CreateMatrix<T>(int positionCount, int pointCount) where T : IPoint
+        {
+            List<Position<T>> t = new List<Position<T>>();
+            for (int i = 0; i < positionCount; i++)
+            {
+                List<T> tp = new List<T>();
+                for (int j = 0; j < pointCount; j++)
+                {
+                    tp.Add((T)Activator.CreateInstance(typeof(T)));
+                }
+                t.Add(tp.PushToPosition());
+
+            }
+            return t.ToArray().PushToMatrix();
+        }
         static void Main(string[] args)
         {
-            //Position<Point1D<int>> p = new Position<Point1D<int>>(new List<Point1D<int>>() { new Point1D<int>(3), new Point1D<int>(4), new Point1D<int>(5) });
-            //Position<Point1D<int>> p1 = new Position<Point1D<int>>(new List<Point1D<int>>() { new Point1D<int>(-3), new Point1D<int>(-4), new Point1D<int>(-5) });
-            //Position<Point2D<int>> p2 = new Position<Point2D<int>>(new List<Point2D<int>>() { new Point2D<int>(-3, -4), new Point2D<int>(-4, -5), new Point2D<int>(-5, -5) });
-            //Matrix<Position<Point1D<int>>> m = new Matrix<Position<Point1D<int>>>(new List<Position<Point1D<int>>>() { p, p1 });
-            //Matrix<Position<Point2D<int>>> m1 = new Matrix<Position<Point2D<int>>>(new List<Position<Point2D<int>>>() { p2 });
-            //Container<Matrix<Position<Point1D<int>>>> c = new Container<Matrix<Position<Point1D<int>>>>(new List<Matrix<Position<Point1D<int>>>>() { m, (m1 as IContainer) });
-            //Containers<Container<Matrix<Position<Point1D<int>>>>> cs = new Containers<Container<Matrix<Position<Point1D<int>>>>>(new List<Container<Matrix<Position<Point1D<int>>>>>() { c });
-
-            //Position<IPoint> t = new Position<IPoint>(new List<IPoint>() { new Point1D<int>(2) });
-            //Position<IPoint> t1 = new Position<IPoint>(new List<IPoint>() { new Point1D<int>(3) });
-            //Position<IPoint> t2 = new Position<IPoint>(new List<IPoint>() { new Point1D<int>(4) });
-            //Position<IPoint> t3 = new Position<IPoint>(new List<IPoint>() { new Point2D<int>(3, 4) });
-            //Matrix<IContainer> tm = new Matrix<IContainer>(new List<IContainer>() { t, t1, t2 });
-            //Matrix<IContainer> tm2 = new Matrix<IContainer>(new List<IContainer>() { t3 });
-            //Container<IContainer> tc = new Container<IContainer>(new List<IContainer>() { tm, tm2 });
-            //Container<IContainer> tc2 = new Container<IContainer>(new List<IContainer>() { tm, tm2 });
-            //Containers<IContainer> tcs = new Containers<IContainer>(new List<IContainer>() { tc, tc2 });
-
-            //var k = (((tcs.GetItems[1] as Container<IContainer>).GetItems[1] as Matrix<IContainer>).GetItems[0] as Point3D<int>);
+            try
+            {
+                //var p1 = CreateListOfPoint<Point1D<int>>(20).PushToPosition();
+                //var p2 = CreateListOfPoint<Point1D<int>>(20).PushToPosition();
+                //var p3 = CreateListOfPoint<Point1D<int>>(20).PushToPosition();
 
 
 
+                //var m1 = new IContainer[] { p1, p2, p3 }.PushToMatrix();
+                //var m2 = new IContainer[] { p2, p3 }.PushToMatrix();
 
-            //IPoint t = new Point2D<double>(3, 5);
-            //IPoint t1 = new Point2D<double>(3, 5);
-            //Position<IPoint> m;
-            //Type j = t.GetType();
-            //Console.WriteLine();
+                //var c1 = new IContainer[] { m1, m2 }.PushToContainer();
+                //var c2 = new IContainer[] { m2, m1 }.PushToContainer();
 
-            //List<Point1D<int>> p = new List<Point1D<int>>() { new Point1D<int>(2), new Point1D<int>(3) };
+                //var cs1 = new IContainer[] { c1, c2 }.PushToContainers();
 
-            //List<Point1D<int>> p1 = new List<Point1D<int>>() { new Point1D<int>(2), new Point1D<int>(3) };
-            //List<IContainer> pl = new List<IContainer>() { p.PushToPosition(), p1.PushToPosition() };
-            //var c = pl.PushToMatrix();
-            //Console.WriteLine(c.GetType().Name);
+                var m1 = CreateMatrix<Point2D<double>>(2, 3);
+                var m2 = CreateMatrix<Point1D<double>>(2, 3);
+                var m3 = CreateMatrix<Point2D<double>>(2, 3);
+                var m4 = CreateMatrix<Point1D<double>>(2, 3);
+                var m5 = CreateMatrix<Point2D<double>>(2, 3);
+                var m6 = CreateMatrix<Point1D<double>>(2, 3);
 
-            var p1 = CreateListOfPoint<Point1D<int>>(20).PushToPosition();
-            var p2 = CreateListOfPoint<Point2D<int>>(20).PushToPosition();
-            var p3 = CreateListOfPoint<Point1D<int>>(20).PushToPosition();
+                var c1 = new IContainer[] { m1, m2 }.PushToContainer();
+                var c2 = new IContainer[] { m3, m4 }.PushToContainer();
+                var c3 = new IContainer[] { m5, m6 }.PushToContainer();
 
-            var m1 = new IContainer[] { p1, p2, p3 }.PushToMatrix();
-            var m2 = new IContainer[] { p2, p3 }.PushToMatrix();
+                var cs = new IContainer[] { c1, c2, c3 }.PushToContainers();
 
-            var c1 = new IContainer[] { m1, m2 }.PushToContainer();
-            var c2 = new IContainer[] { m2, m1 }.PushToContainer();
+                int cont = 1;
 
-            var cs1 = new IContainer[] { c1, c2 }.PushToContainers();
+                foreach (IContainer container in cs)
+                {
+                    int mt = 1;
+                    Console.WriteLine("Container {0}", cont);
+                    foreach (IContainer matrix in container)
+                    {
+                        int ps = 1;
+                        Console.WriteLine("\tMatrix {0}", mt);
+                        foreach (IContainer position in matrix)
+                        {
+                            Console.WriteLine("\t\tPosition {0}", ps);
+                            foreach (IPoint point in position)
+                            {
+                                Console.WriteLine("\t\t\t" + point.ToString());
+                            }
+                            ps++;
+                        }
+                        mt++;
+                    }
+                    cont++;
+                }
 
-            
+            }
+            catch (Exception e)
+            {
 
-            var r = ((m2.GetItems.First() as Position<IPoint
-                >).GetItems.First() as Point2D<int>).Y;
-            Console.WriteLine(r);
-
-
-            IPoint t = new Point2D<int>(2, 5);
-            Console.WriteLine(t.ToString());
-            //IPoint t1 = t;
-            //Point2D<int> t2 = (Point2D<int>)t1;
-
-            
-            
+                Console.WriteLine(e.Message);
+            }
 
 
-            
 
-            
-            
-                 
+
+
+
+
+
+
+
 
 
             Console.WriteLine("\n\ncompleted!".ToUpper());
@@ -100,3 +115,4 @@ namespace Compta
         }
     }
 }
+

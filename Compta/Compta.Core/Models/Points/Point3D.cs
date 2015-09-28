@@ -81,6 +81,10 @@ namespace Compta.Core.Models.Point
         } 
         #endregion
 
+        /// <summary>
+        /// Returns a string that represent the current object
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return String.Format("3D point: (x: {0}; y: {1}; z: {2})", X, Y, Z);

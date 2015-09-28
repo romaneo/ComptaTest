@@ -9,7 +9,10 @@ namespace Compta.Core.Models.Containers
 {
     public interface IContainer : IEnumerator, IEnumerable
     {
-        //List<IContainer> GetItems
-        //{ get; } 
+        /// <summary>
+        /// Gets the numbers of elements actually contained in container
+        /// </summary>
+        /// <returns></returns>
+        int Count();
     }
 }

@@ -11,6 +11,6 @@ namespace Compta.Core.Models.Point
     /// </summary>
     public interface IPoint
     {
-
+       
     }
 }
