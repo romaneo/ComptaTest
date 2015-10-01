@@ -8,6 +8,10 @@ using System.Text;
 
 namespace Compta.Core.Models.Containers
 {
+    /// <summary>
+    /// Represents a container of indexed collection of position
+    /// </summary>
+    /// <typeparam name="T">The types of container in container</typeparam>
     public class Matrix<T> : IContainer where T : IContainer
     {
         private List<T> _positionList;
@@ -47,8 +51,9 @@ namespace Compta.Core.Models.Containers
             {
                 int pointCount = positions.FirstOrDefault().Count();
                 bool isPointsCountEqual = positions.Where(x => x.Count() == pointCount).Count() == positions.Count();
+
                 if (!isPointsCountEqual)
-                    throw new Exception("The number of data points at each XYZ position will be the same for all positions on a matrix ");
+                    throw new Exception("The number of data points at each XYZ position will be the same for all positions on a matrix ");                
             } 
 
             #endregion
@@ -107,11 +112,11 @@ namespace Compta.Core.Models.Containers
         /// </summary>
         /// <param name="i">index of the element</param>
         /// <returns></returns>
-        public Position<IPoint> this[int i]
+        public IContainer this[int i]
         {
             get
             {
-                return (_positionList[i] as Position<IPoint>);
+                return _positionList[i];
             }
         } 
 

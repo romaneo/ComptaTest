@@ -8,6 +8,10 @@ using Compta.Core.Settings;
 
 namespace Compta.Core.Models.Containers
 {
+    /// <summary>
+    /// Represents a container of indexed collection of points
+    /// </summary>
+    /// <typeparam name="T">The types of points in container</typeparam>
     public class Position<T> : IContainer where T : IPoint
     {
         private List<T> _pointList;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Compta.Core.Settings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -65,9 +66,12 @@ namespace Compta.Core.Models.Point
         /// <param name="z">The applicate position of the point </param>
         public Point3D(T x, T y, T z)
         {
-            _x = x;
-            _y = y;
-            _z = z;
+            if (Limits.CheckNumericalData(typeof(T)))
+            {
+                _x = x;
+                _y = y;
+                _z = z;
+            }
         }
 
         /// <summary>
@@ -75,9 +79,12 @@ namespace Compta.Core.Models.Point
         /// </summary>
         public Point3D()
         {
-            _x = default(T);
-            _y = default(T);
-            _z = default(T);
+            if (Limits.CheckNumericalData(typeof(T)))
+            {
+                _x = default(T);
+                _y = default(T);
+                _z = default(T);
+            }
         } 
         #endregion
 

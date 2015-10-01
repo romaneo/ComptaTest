@@ -50,5 +50,28 @@ namespace Compta.Tests.PointTests
             var m = new IContainer[] { p1, p2, p3 }.PushToMatrix();
             var m1 = new IContainer[] { p1, p2, p3, p4 }.PushToMatrix();
         }
+
+        [TestMethod]
+        public void Different3DMatricesHaveDifferentNumberOfPosition()
+        {
+            var p1 = CreateListOfPoint<Point3D<int>>(3).PushToPosition();
+            var p2 = CreateListOfPoint<Point3D<int>>(3).PushToPosition();
+            var p3 = CreateListOfPoint<Point3D<int>>(3).PushToPosition();
+            var p4 = CreateListOfPoint<Point3D<int>>(3).PushToPosition();
+
+            var m1 = new IContainer[] { p1, p2 }.PushToMatrix();
+            var m2 = new IContainer[] { p1, p2,p3 }.PushToMatrix();
+        }
+
+        [ExpectedException(typeof(Exception))]
+        [TestMethod]
+        public void XYZPositionHaveSameNumberOfPointForAllPositionOnAMatrix()
+        {
+            var p1 = CreateListOfPoint<Point3D<int>>(10).PushToPosition();
+            var p2 = CreateListOfPoint<Point3D<int>>(9).PushToPosition();
+            var m1 = new IContainer[] { p1, p2 }.PushToMatrix();
+        }
+
+     
     }
 }

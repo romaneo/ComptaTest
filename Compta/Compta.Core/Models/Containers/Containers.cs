@@ -6,6 +6,10 @@ using System.Text;
 
 namespace Compta.Core.Models.Containers
 {
+    /// <summary>
+    /// Represents a container of indexed collection of container
+    /// </summary>
+    /// <typeparam name="T">The types of container in container</typeparam>
     public class Containers<T> : IContainer where T : IContainer
     {
         private List<T> _containersList;
@@ -72,11 +76,11 @@ namespace Compta.Core.Models.Containers
         /// </summary>
         /// <param name="i">index of the element</param>
         /// <returns></returns>
-        public Container<IContainer> this[int i]
+        public IContainer this[int i]
         {
             get
             {
-                return (_containersList[i] as Container<IContainer>);
+                return (_containersList[i]);
             }
         } 
 

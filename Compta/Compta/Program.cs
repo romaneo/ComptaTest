@@ -68,29 +68,31 @@ namespace Compta
 
                 var cs = new IContainer[] { c1, c2, c3 }.PushToContainers();
 
-                int cont = 1;
 
-                foreach (IContainer container in cs)
-                {
-                    int mt = 1;
-                    Console.WriteLine("Container {0}", cont);
-                    foreach (IContainer matrix in container)
-                    {
-                        int ps = 1;
-                        Console.WriteLine("\tMatrix {0}", mt);
-                        foreach (IContainer position in matrix)
-                        {
-                            Console.WriteLine("\t\tPosition {0}", ps);
-                            foreach (IPoint point in position)
-                            {
-                                Console.WriteLine("\t\t\t" + point.ToString());
-                            }
-                            ps++;
-                        }
-                        mt++;
-                    }
-                    cont++;
-                }
+                //int cont = 1;
+
+
+                //foreach (IContainer container in cs)
+                //{
+                //    int mt = 1;
+                //    Console.WriteLine("Container {0}", cont);
+                //    foreach (IContainer matrix in container)
+                //    {
+                //        int ps = 1;
+                //        Console.WriteLine("\tMatrix {0}", mt);
+                //        foreach (IContainer position in matrix)
+                //        {
+                //            Console.WriteLine("\t\tPosition {0}", ps);
+                //            foreach (IPoint point in position)
+                //            {
+                //                Console.WriteLine("\t\t\t" + point.ToString());
+                //            }
+                //            ps++;
+                //        }
+                //        mt++;
+                //    }
+                //    cont++;
+                //}
 
             }
             catch (Exception e)

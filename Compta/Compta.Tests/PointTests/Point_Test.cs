@@ -31,5 +31,13 @@ namespace Compta.Tests
             Assert.AreEqual(point.Y, 45);
             Assert.AreEqual(point.Z, 0);
         }
+
+        [ExpectedException(typeof(Exception))]
+        [TestMethod]
+        public void CreateTwoPointWithDifferentType()
+        {
+            Point1D<int> p1 = new Point1D<int>(3);
+            Point2D<decimal> p2 = new Point2D<decimal>(3m, 4m);
+        }
     }
 }

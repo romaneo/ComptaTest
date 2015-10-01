@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Compta.Core.Settings;
 
 namespace Compta.Core.Models.Point
 {
@@ -20,7 +21,7 @@ namespace Compta.Core.Models.Point
             {
                 return _x;
             }
-        } 
+        }
         #endregion
 
         #region Constructors
@@ -30,7 +31,8 @@ namespace Compta.Core.Models.Point
         /// <param name="x">The position of the point </param>
         public Point1D(T x)
         {
-            _x = x;
+            if (Limits.CheckNumericalData(typeof(T)))
+                _x = x;
         }
 
         /// <summary>
@@ -38,14 +40,15 @@ namespace Compta.Core.Models.Point
         /// </summary>
         public Point1D()
         {
-            _x = default(T);
-        } 
+            if (Limits.CheckNumericalData(typeof(T)))
+                _x = default(T);
+        }
         #endregion
 
-       /// <summary>
-       /// Returns a string that represent the current object
-       /// </summary>
-       /// <returns></returns>
+        /// <summary>
+        /// Returns a string that represent the current object
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return String.Format("1D point: (x: {0})", X);

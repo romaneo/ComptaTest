@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Compta.Core.Settings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,8 +48,11 @@ namespace Compta.Core.Models.Point
         /// <param name="y">The vertical position of the point </param>
         public Point2D(T x, T y)
         {
-            _x = x;
-            _y = y;
+            if (Limits.CheckNumericalData(typeof(T)))
+            {
+                _x = x;
+                _y = y;
+            }
         }
 
         /// <summary>
@@ -56,9 +60,12 @@ namespace Compta.Core.Models.Point
         /// </summary>
         public Point2D()
         {
-            _x = default(T);
-            _y = default(T);
-        } 
+            if (Limits.CheckNumericalData(typeof(T)))
+            {
+                _x = default(T);
+                _y = default(T);
+            }
+        }
         #endregion
 
         /// <summary>
