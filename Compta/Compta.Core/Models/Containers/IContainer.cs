@@ -7,6 +7,9 @@ using System.Text;
 
 namespace Compta.Core.Models.Containers
 {
+    /// <summary>
+    /// Base interface for different types of container
+    /// </summary>
     public interface IContainer : IEnumerator, IEnumerable
     {
         /// <summary>

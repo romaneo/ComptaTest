@@ -44,6 +44,7 @@
     <Compile Include="Models\Containers\IContainer.cs" />
     <Compile Include="Models\Containers\Matrix.cs" />
     <Compile Include="Models\Containers\Position.cs" />
+    <Compile Include="Models\Extensions\Creator.cs" />
     <Compile Include="Models\Extensions\Extension.cs" />
     <Compile Include="Models\Points\IPoint.cs" />
     <Compile Include="Models\Points\Point1D.cs" />
