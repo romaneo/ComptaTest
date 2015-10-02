@@ -12,7 +12,7 @@ namespace Compta.Core.Models.Containers
     /// Represents a container of indexed collection of matrix
     /// </summary>
     /// <typeparam name="T">The types of container in container</typeparam>
-    public class Container<T> : IContainer where T : IContainer
+    public class Container<T> : IContainer, IEnumerable<IContainer> where T : IContainer
     {
         private List<T> _matrixList;
         int position = -1;
@@ -162,6 +162,15 @@ namespace Compta.Core.Models.Containers
         public  int Count()
         {
             return _matrixList.Count;
+        }
+
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator<IContainer> IEnumerable<IContainer>.GetEnumerator()
+        {
+            return _matrixList.Cast<IContainer>().GetEnumerator();
         }
     }
 }

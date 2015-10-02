@@ -12,7 +12,7 @@ namespace Compta.Core.Models.Containers
     /// Represents a container of indexed collection of points
     /// </summary>
     /// <typeparam name="T">The types of points in container</typeparam>
-    public class Position<T> : IContainer where T : IPoint
+    public class Position<T> : IContainer, IEnumerable<IPoint> where T : IPoint
     {
         private List<T> _pointList;
         int position = -1;
@@ -41,11 +41,12 @@ namespace Compta.Core.Models.Containers
 
         #region IEnumerable
 
+       
        /// <summary>
         /// Returns an enumerator that iterates through the collection.
        /// </summary>
        /// <returns></returns>
-        public IEnumerator GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return (IEnumerator)this;
         }
@@ -99,5 +100,13 @@ namespace Compta.Core.Models.Containers
             return _pointList.Count;
         }
 
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator<IPoint> IEnumerable<IPoint>.GetEnumerator()
+        {
+            return _pointList.Cast<IPoint>().GetEnumerator();
+        }
     }
 }

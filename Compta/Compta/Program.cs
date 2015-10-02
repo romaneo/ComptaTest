@@ -70,6 +70,7 @@ namespace Compta
 
                 //var cs1 = new IContainer[] { c1, c2 }.PushToContainers();
 
+
                 var m1 = CreateMatrix<Point2D<double>>(2, 3);
                 var m2 = CreateMatrix<Point1D<double>>(2, 3);
                 var m3 = CreateMatrix<Point2D<double>>(2, 3);

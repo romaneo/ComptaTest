@@ -10,7 +10,7 @@ namespace Compta.Core.Models.Containers
     /// Represents a container of indexed collection of container
     /// </summary>
     /// <typeparam name="T">The types of container in container</typeparam>
-    public class Containers<T> : IContainer where T : IContainer
+    public class Containers<T> : IContainer, IEnumerable<IContainer> where T : IContainer
     {
         private List<T> _containersList;
         int position = -1;
@@ -93,6 +93,15 @@ namespace Compta.Core.Models.Containers
         public int Count()
         {
             return _containersList.Count;
+        }
+
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator<IContainer> IEnumerable<IContainer>.GetEnumerator()
+        {
+            return _containersList.Cast<IContainer>().GetEnumerator();
         }
     }
 }
