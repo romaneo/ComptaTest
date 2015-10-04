@@ -52,6 +52,7 @@
     <Compile Include="Models\Extensions\Extension.cs" />
     <Compile Include="Models\NewContainers\Matrix.cs" />
     <Compile Include="Models\NewContainers\Position.cs" />
+    <Compile Include="Models\NewExtensions\Creator.cs" />
     <Compile Include="Models\Points\IPoint.cs" />
     <Compile Include="Models\Points\Point1D.cs" />
     <Compile Include="Models\Points\Point2D.cs" />

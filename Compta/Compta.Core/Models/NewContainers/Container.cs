@@ -6,14 +6,32 @@ using System.Text;
 
 namespace Compta.Core.Models.NewContainers
 {
+   /// <summary>
+    /// Represents a container of indexed collection of matrix
+   /// </summary>
     public class Container: IContainer, IEnumerable<Matrix>
     {
         List<Matrix> _matrixList;
         int position = -1;
 
+        /// <summary>
+        /// Initialize a new instance of the Container
+        /// </summary>
+        /// <param name="matrices">List of matrices</param>
         public Container(List<Matrix> matrices)
         {
             _matrixList = matrices;
+        }
+
+        /// <summary>
+        /// Returns a collection of items from the Container
+        /// </summary>
+        public List<Matrix> GetItems
+        {
+            get
+            {
+                return _matrixList;
+            }
         }
 
         #region IEnumerable
@@ -67,27 +85,41 @@ namespace Compta.Core.Models.NewContainers
         /// </summary>
         /// <param name="i">index of the element</param>
         /// <returns></returns>
-        public IContainer this[int i]
+        public Matrix this[int i]
         {
             get
             {
-                return (_matrixList[i]);
+                return _matrixList[i];
             }
         }
 
         #endregion
 
         #region IContainer
+
+        /// <summary>
+        /// Returns the type of inner element by index 
+        /// </summary>
+        /// <param name="index">Index of the element</param>
+        /// <returns></returns>
         public Type GetElemetType(int index = 0)
         {
             return _matrixList[index].GetType();
         }
-
+        
+        /// <summary>
+        /// Returns an array of types of inner items
+        /// </summary>
+        /// <returns></returns>
         public Type[] GetElementTypes()
         {
             return _matrixList.Select(x => x.GetType()).ToArray();
         }
 
+        /// <summary>
+        /// Gets the numbers of elements actually contained in container
+        /// </summary>
+        /// <returns></returns>
         public int Count
         {
             get

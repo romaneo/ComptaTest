@@ -6,14 +6,32 @@ using System.Text;
 
 namespace Compta.Core.Models.NewContainers
 {
+    /// <summary>
+    /// Represents a container of indexed collection of container
+    /// </summary>
     public class Containers:IContainer, IEnumerable<Container>
     {
         List<Container> _containersList;
         int position = -1;
 
+        /// <summary>
+        /// Initialize a new instance of the Containers
+        /// </summary>
+        /// <param name="containers">List of container</param>
         public Containers(List<Container> containers)
         {
             _containersList = containers;
+        }
+
+        /// <summary>
+        /// Returns a collection of items from the Container
+        /// </summary>
+        public List<Container> GetItems
+        {
+            get
+            {
+                return _containersList;
+            }
         }
 
         #region IEnumerable
@@ -67,27 +85,41 @@ namespace Compta.Core.Models.NewContainers
         /// </summary>
         /// <param name="i">index of the element</param>
         /// <returns></returns>
-        public IContainer this[int i]
+        public Container this[int i]
         {
             get
             {
-                return (_containersList[i]);
+                return _containersList[i];
             }
         }
 
         #endregion
 
         #region IContainer
+
+        /// <summary>
+        /// Returns the type of inner element by index 
+        /// </summary>
+        /// <param name="index">Index of the element</param>
+        /// <returns></returns>
         public Type GetElemetType(int index = 0)
         {
             return _containersList[index].GetType();
         }
 
+        /// <summary>
+        /// Returns an array of types of inner items
+        /// </summary>
+        /// <returns></returns>
         public Type[] GetElementTypes()
         {
             return _containersList.Select(x => x.GetType()).ToArray();
         }
 
+        /// <summary>
+        /// Gets the numbers of elements actually contained in container
+        /// </summary>
+        /// <returns></returns>
         public int Count
         {
             get
