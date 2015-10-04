@@ -6,6 +6,7 @@ using Compta.Core.Models;
 using Compta.Core.Models.Point;
 using Compta.Core.Models.Containers;
 using Compta.Core.Models.Extensions;
+using NC = Compta.Core.Models.NewContainers;
 
 
 namespace Compta
@@ -71,49 +72,68 @@ namespace Compta
                 //var cs1 = new IContainer[] { c1, c2 }.PushToContainers();
 
 
-                var m1 = CreateMatrix<Point2D<double>>(2, 3);
-                var m2 = CreateMatrix<Point1D<double>>(2, 3);
-                var m3 = CreateMatrix<Point2D<double>>(2, 3);
-                var m4 = CreateMatrix<Point1D<double>>(2, 3);
-                var m5 = CreateMatrix<Point2D<double>>(2, 3);
-                var m6 = CreateMatrix<Point1D<double>>(2, 3);
+            //    var m1 = CreateMatrix<Point2D<double>>(2, 3);
+            //    var m2 = CreateMatrix<Point1D<double>>(2, 3);
+            //    var m3 = CreateMatrix<Point2D<double>>(2, 3);
+            //    var m4 = CreateMatrix<Point1D<double>>(2, 3);
+            //    var m5 = CreateMatrix<Point2D<double>>(2, 3);
+            //    var m6 = CreateMatrix<Point1D<double>>(2, 3);
 
-                var c1 = Creator.CreateContainer(m1, m2);
-                var c2 = Creator.CreateContainer( m3, m4 );
-                var c3 = Creator.CreateContainer( m5, m6 );
+            //    var c1 = Creator.CreateContainer(m1, m2);
+            //    var c2 = Creator.CreateContainer( m3, m4 );
+            //    var c3 = Creator.CreateContainer( m5, m6 );
 
-                var cs = Creator.CreateContainers( c1, c2, c3);
+            //    var cs = Creator.CreateContainers( c1, c2, c3);
 
-                int cont = 1;
+            //    int cont = 1;
 
-                foreach (IContainer container in cs)
-                {
-                    int mt = 1;
-                    Console.WriteLine("Container {0}", cont);
-                    foreach (IContainer matrix in container)
-                    {
-                        int ps = 1;
-                        Console.WriteLine("\tMatrix {0}", mt);
-                        foreach (IContainer position in matrix)
-                        {
-                            Console.WriteLine("\t\tPosition {0}", ps);
-                            foreach (IPoint point in position)
-                            {
-                                Console.WriteLine("\t\t\t" + point.ToString());
-                            }
-                            ps++;
-                        }
-                        mt++;
-                    }
-                    cont++;
-                }
+            //    foreach (IContainer container in cs)
+            //    {
+            //        int mt = 1;
+            //        Console.WriteLine("Container {0}", cont);
+            //        foreach (IContainer matrix in container)
+            //        {
+            //            int ps = 1;
+            //            Console.WriteLine("\tMatrix {0}", mt);
+            //            foreach (IContainer position in matrix)
+            //            {
+            //                Console.WriteLine("\t\tPosition {0}", ps);
+            //                foreach (IPoint point in position)
+            //                {
+            //                    Console.WriteLine("\t\t\t" + point.ToString());
+            //                }
+            //                ps++;
+            //            }
+            //            mt++;
+            //        }
+            //        cont++;
+            //    }
 
             }
             catch (Exception e)
             {
 
-                Console.WriteLine(e.Message);
+            //    Console.WriteLine(e.Message);
             }
+            //var t = new NC.Position<Point1D<int>>();
+            //NC.IPointContainer t1 = new NC.Position<Point1D<int>>();
+
+            //NC.IPointContainer t2 = new NC.Position<Point2D<int>>();
+            //NC.IPointContainer t3 = new NC.Position<Point2D<int>>();
+
+            //List<NC.IPointContainer> pl1 = new List<NC.IPointContainer>() { t, t1 };
+            //List<NC.IPointContainer> pl2 = new List<NC.IPointContainer>() { t2, t3 };
+
+            //NC.Matrix m1 = new NC.Matrix(pl1);
+            //NC.Matrix m2 = new NC.Matrix(pl2);
+
+            //NC.Container c = new NC.Container(new List<NC.Matrix>() { m1, m2 });
+
+
+            //Console.WriteLine(m1.GetType() );
+            //Console.WriteLine(m1.ToString());
+
+
 
 
             Console.WriteLine("\n\ncompleted!".ToUpper());
@@ -121,4 +141,5 @@ namespace Compta
         }
     }
 }
+
 

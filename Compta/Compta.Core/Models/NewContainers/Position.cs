@@ -1,43 +1,22 @@
-﻿﻿using Compta.Core.Models.Point;
+﻿using Compta.Core.Models.Point;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Compta.Core.Settings;
 
-namespace Compta.Core.Models.Containers
+namespace Compta.Core.Models.NewContainers
 {
-    /// <summary>
-    /// Represents a container of indexed collection of points
-    /// </summary>
-    /// <typeparam name="T">The types of points in container</typeparam>
-    public class Position<T> : IContainer, IEnumerable , IEnumerable<IPoint> where T : IPoint
+    public class Position<T> : IPointContainer,IContainer, IEnumerable<IPoint> where T : IPoint
     {
         private List<T> _pointList;
         int position = -1;
 
-        /// <summary>
-        /// Returns a collection of items from the Position
-        /// </summary>
-        public List<T> GetItems
+        public Position(List<T> poisnts)
         {
-            get
-            {
-                return _pointList;
-            }
+            _pointList = poisnts;
         }
 
-        /// <summary>
-        /// Initialize a new instance of the Position
-        /// </summary>
-        /// <param name="points">List of points</param>
-        public Position(List<T> points)
-        {
-            
-
-            _pointList = points;
-        }
 
         #region IEnumerable
 
@@ -51,10 +30,10 @@ namespace Compta.Core.Models.Containers
         }
 
 
-       /// <summary>
+        /// <summary>
         /// Returns an enumerator that iterates through the collection.
-       /// </summary>
-       /// <returns></returns>
+        /// </summary>
+        /// <returns></returns>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return (IEnumerator)this;
@@ -97,19 +76,27 @@ namespace Compta.Core.Models.Containers
             {
                 return _pointList[i];
             }
-        } 
+        }
         #endregion
 
-        /// <summary>
-        /// Gets the numbers of elements actually contained in container
-        /// </summary>
-        /// <returns></returns>
-        public  int Count()
+        #region IContainer
+        public Type GetElemetType(int index = 0)
         {
-            return _pointList.Count;
+            return _pointList[index].GetType();
         }
 
-    
-       
+        public Type[] GetElementTypes()
+        {
+            return _pointList.Select(x => x.GetType()).ToArray();
+        } 
+
+        public int Count
+        {
+            get
+            {
+                return _pointList.Count;
+            }
+        }
+        #endregion
     }
 }
