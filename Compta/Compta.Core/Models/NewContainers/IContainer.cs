@@ -16,7 +16,7 @@ namespace Compta.Core.Models.NewContainers
         /// </summary>
         /// <param name="index">Index of the element</param>
         /// <returns></returns>
-        Type GetElemetType(int index = 0);
+        Type GetElementType(int index = 0);
 
         /// <summary>
         /// Returns an array of types of inner items

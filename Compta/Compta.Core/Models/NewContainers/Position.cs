@@ -103,7 +103,7 @@ namespace Compta.Core.Models.NewContainers
         /// </summary>
         /// <param name="index">Index of the element</param>
         /// <returns></returns>
-        public Type GetElemetType(int index = 0)
+        public Type GetElementType(int index = 0)
         {
             return _pointList[index].GetType();
         }
@@ -129,5 +129,17 @@ namespace Compta.Core.Models.NewContainers
             }
         }
         #endregion
+
+        /// <summary>
+        /// Gets the numbers of elements actually contained in container
+        /// </summary>
+        /// <returns></returns>
+        int IPointContainer.Count
+        {
+            get
+            {
+                return _pointList.Count;
+            }
+        }
     }
 }

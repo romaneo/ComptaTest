@@ -57,7 +57,6 @@ namespace Compta
         {
             try
             {
-
                 //var p1 = CreateListOfPoint<Point1D<int>>(20).PushToPosition();
                 //var p2 = CreateListOfPoint<Point1D<int>>(20).PushToPosition();
                 //var p3 = CreateListOfPoint<Point1D<int>>(20).PushToPosition();
@@ -110,20 +109,21 @@ namespace Compta
                 //        cont++;
                 //    }
 
-
                 var p1 = NE.Creator.CreatePosition<Point1D<int>>(CreateListOfPoint<Point1D<int>>(10).ToArray());
                 var p2 = NE.Creator.CreatePosition<Point1D<int>>(CreateListOfPoint<Point1D<int>>(10).ToArray());
                 var p3 = NE.Creator.CreatePosition<Point1D<int>>(CreateListOfPoint<Point1D<int>>(10).ToArray());
                 var p4 = NE.Creator.CreatePosition<Point1D<int>>(CreateListOfPoint<Point1D<int>>(10).ToArray());
 
-                var m1 = NE.Creator.CreateMatrix(p1, p2);
+
+                var m1 = NE.Creator.CreateMatrix(p1,p2);
                 var m2 = NE.Creator.CreateMatrix(p3, p4);
 
                 var c1 = NE.Creator.CreateContainer(m1, m2);
                 var c2 = NE.Creator.CreateContainer(m2, m1);
 
                 var cs = NE.Creator.CreateContainers(c1, c2);
-                var n = cs[0][0][0][0];
+               // var n = cs[0][0][0][0];
+
 
             }
             catch (Exception e)

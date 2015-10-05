@@ -69,6 +69,7 @@ namespace Compta.Tests.PointTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(Exception))]
         public void NumberOfPointsAtEach3DPositionSameAcrossEquivalentMatrixIndexesAcrossContainers()
         {
             var p1 = CreateListOfPoint<Point3D<int>>(5).PushToPosition();

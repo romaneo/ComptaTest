@@ -102,7 +102,7 @@ namespace Compta.Core.Models.NewContainers
         /// </summary>
         /// <param name="index">Index of the element</param>
         /// <returns></returns>
-        public Type GetElemetType(int index = 0)
+        public Type GetElementType(int index = 0)
         {
             return _containersList[index].GetType();
         }

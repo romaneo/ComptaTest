@@ -1,4 +1,5 @@
 ﻿using Compta.Core.Models.Point;
+using Compta.Core.Settings;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,19 +21,53 @@ namespace Compta.Core.Models.NewContainers
         /// Initialize a new instance of the Matrix
         /// </summary>
         /// <param name="positions">List of positions</param>
-        public Matrix(List<IPointContainer> position)
+        public Matrix(List<IPointContainer> positions)
         {
-            _positionList = position;
+
+            #region check All matrices in all containers have the same number of positions
+
+            if (Limits.PositionCountInMatrix < 0)
+                Limits.PositionCountInMatrix = positions.Count;
+
+            if (Limits.PositionCountInMatrix >= 0 && Limits.PositionCountInMatrix != positions.Count && !(positions.FirstOrDefault()).GetType().GetGenericArguments()[0].Name.Contains("3D"))
+                throw new Exception("All matrices in all containers have the same number of positions.");
+
+            #endregion
+
+            #region Check The number of data points at each XYZ position will be the same for all positions on a matrix
+
+            if ((positions.FirstOrDefault()).GetType().GetGenericArguments()[0].Name.Contains("3D"))
+            {
+                int pointCount = (positions.FirstOrDefault()).Count;
+                bool isPointsCountEqual = positions.Where(x => x.Count == pointCount).Count() == positions.Count();
+
+                if (!isPointsCountEqual)
+                    throw new Exception("The number of data points at each XYZ position will be the same for all positions on a matrix ");
+            }
+
+            #endregion
+
+            #region Check All positions in a specific matrix will be of the same position type.
+
+            Type PositionTypeInMatrix = positions.FirstOrDefault().GetType();
+            bool isTypesEqual = positions.Where(x => x.GetType() == PositionTypeInMatrix).Count() == positions.Count();
+            if (!isTypesEqual)
+                throw new Exception("All positions in a specific matrix will be of the same position type.");
+
+            #endregion
+
+
+            _positionList = positions;
         }
 
         /// <summary>
         /// Returns a collection of items from the Matrix
         /// </summary>
-        public List<Position<IPoint>> GetItems
+        public List<IPointContainer> GetItems
         {
             get
             {
-                return _positionList.Cast<Position<IPoint>>().ToList();
+                return _positionList.ToList();
             }
         }
 
@@ -104,7 +139,7 @@ namespace Compta.Core.Models.NewContainers
         /// </summary>
         /// <param name="index">Index of the element</param>
         /// <returns></returns>
-        public Type GetElemetType(int index = 0)
+        public Type GetElementType(int index = 0)
         {
             return _positionList[index].GetType();
         }

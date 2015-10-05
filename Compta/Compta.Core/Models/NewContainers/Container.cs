@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Compta.Core.Settings;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,70 @@ namespace Compta.Core.Models.NewContainers
         /// <param name="matrices">List of matrices</param>
         public Container(List<Matrix> matrices)
         {
+
+            #region Check Each container in a containers collection contains the same number of matrices
+
+            if (Limits.MatrixCountInContainer < 0)
+                Limits.MatrixCountInContainer = matrices.Count;
+
+            if (Limits.MatrixCountInContainer >= 0 && Limits.MatrixCountInContainer != matrices.Count)
+                throw new Exception("Each container in a containers collection contains the same number of matrices");
+
+            #endregion
+
+            #region Check Type of each indexed matrix will be the same across containers
+
+            //fill dicttionary[index, type] if it is a first conteiner
+            if (Limits.MatrixCountInContainer > 0 && Limits.IndexedMatrixType == null)
+            {
+                Limits.IndexedMatrixType = new Dictionary<int, Type>();
+
+                for (int i = 0; i < matrices.Count; i++)
+                {
+                    Limits.IndexedMatrixType.Add(i, matrices[i].GetElementType());
+                }
+            }
+
+            //Check that all indexed matrix are same type using dicttionary[index, type]
+            if (Limits.MatrixCountInContainer > 0 && Limits.IndexedMatrixType != null)
+            {
+                for (int i = 0; i < matrices.Count; i++)
+                {
+                    Type type = matrices[i].GetElementType();
+                    if (type != Limits.IndexedMatrixType[i])
+                        throw new Exception("Type of each indexed matrix will be the same across containers");
+
+                }
+            }
+
+            #endregion
+
+            #region Check The number of data points at each XYZ position will be the same across equivalent matrix indexes across containers.
+
+            //fill dictionary[index, pointCount]
+            if (Limits.Indexed3DMatrixPointCount == null || Limits.Indexed3DMatrixPointCount.Count < matrices.Count)
+            {
+                Limits.Indexed3DMatrixPointCount = new Dictionary<int, int>();
+
+                for (int i = 0; i < matrices.Count; i++)
+                {
+                    Limits.Indexed3DMatrixPointCount.Add(i, matrices[i].GetItems[0].Count);
+                }
+            }
+
+            //check number of data points on equivalent  matrix indexes across container
+            if (Limits.Indexed3DMatrixPointCount != null && Limits.Indexed3DMatrixPointCount.Count >= matrices.Count)
+            {
+                for (int i = 0; i < matrices.Count; i++)
+                {
+                    if (Limits.Indexed3DMatrixPointCount[i] != matrices[i].GetItems[0].Count)
+                        throw new Exception("The number of data points at each XYZ position will be the same across equivalent matrix indexes across containers.");
+                }
+            }
+
+            #endregion
+
+
             _matrixList = matrices;
         }
 
@@ -102,7 +167,7 @@ namespace Compta.Core.Models.NewContainers
         /// </summary>
         /// <param name="index">Index of the element</param>
         /// <returns></returns>
-        public Type GetElemetType(int index = 0)
+        public Type GetElementType(int index = 0)
         {
             return _matrixList[index].GetType();
         }
