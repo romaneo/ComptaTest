@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using Compta.Core.Models;
 using Compta.Core.Models.Point;
-using Compta.Core.Models.Containers;
-using Compta.Core.Models.Extensions;
 using NE = Compta.Core.Models.NewExtensions;
 using NC = Compta.Core.Models.NewContainers;
+using Compta.Core.Models.NewContainers;
+using Compta.Core.Models.NewExtensions;
 
 
 namespace Compta
@@ -37,7 +37,7 @@ namespace Compta
         /// <param name="positionCount">Positions count</param>
         /// <param name="pointCount">Points count</param>
         /// <returns></returns>
-        public static Matrix<IContainer> CreateMatrix<T>(int positionCount, int pointCount) where T : IPoint
+        public static Matrix CreateMatrix<T>(int positionCount, int pointCount) where T : IPoint
         {
             List<Position<T>> t = new List<Position<T>>();
             for (int i = 0; i < positionCount; i++)
@@ -47,10 +47,10 @@ namespace Compta
                 {
                     tp.Add((T)Activator.CreateInstance(typeof(T)));
                 }
-                t.Add(tp.PushToPosition());
+                t.Add(Creator.CreatePosition<T>(tp.ToArray()));
 
             }
-            return t.ToArray().PushToMatrix();
+            return Creator.CreateMatrix(t.ToArray());
         }
 
         static void Main(string[] args)

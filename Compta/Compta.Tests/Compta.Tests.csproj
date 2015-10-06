@@ -55,11 +55,8 @@
   <ItemGroup>
     <Compile Include="NewTests\Container_Tests.cs" />
     <Compile Include="NewTests\Matrix_Tests.cs" />
+    <Compile Include="NewTests\Points_Test.cs" />
     <Compile Include="NewTests\Position_Tests.cs" />
-    <Compile Include="PointTests\Container_Test.cs" />
-    <Compile Include="PointTests\Position_Test.cs" />
-    <Compile Include="PointTests\Point_Test.cs" />
-    <Compile Include="PointTests\Matrix_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

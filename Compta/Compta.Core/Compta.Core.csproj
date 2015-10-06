@@ -39,17 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Containers\Container.cs" />
-    <Compile Include="Models\Containers\Containers.cs" />
-    <Compile Include="Models\Containers\IContainer.cs" />
     <Compile Include="Models\NewContainers\Container.cs" />
     <Compile Include="Models\NewContainers\Containers.cs" />
     <Compile Include="Models\NewContainers\IContainer.cs" />
     <Compile Include="Models\NewContainers\IPointContainer.cs" />
-    <Compile Include="Models\Containers\Matrix.cs" />
-    <Compile Include="Models\Containers\Position.cs" />
-    <Compile Include="Models\Extensions\Creator.cs" />
-    <Compile Include="Models\Extensions\Extension.cs" />
     <Compile Include="Models\NewContainers\Matrix.cs" />
     <Compile Include="Models\NewContainers\Position.cs" />
     <Compile Include="Models\NewExtensions\Creator.cs" />
