@@ -20,14 +20,14 @@ namespace Compta
         /// <typeparam name="T">Type of the point</typeparam>
         /// <param name="count">Count of point</param>
         /// <returns></returns>
-        public static List<T> CreateListOfPoint<T>(int count) where T : IPoint
+        public static T[] CreateListOfPoint<T>(int count) where T : IPoint
         {
             List<T> t = new List<T>();
             for (int i = 0; i < count; i++)
             {
                 t.Add((T)Activator.CreateInstance(typeof(T)));
             }
-            return t;
+            return t.ToArray();
         }
 
         /// <summary>
@@ -57,72 +57,52 @@ namespace Compta
         {
             try
             {
-                //var p1 = CreateListOfPoint<Point1D<int>>(20).PushToPosition();
-                //var p2 = CreateListOfPoint<Point1D<int>>(20).PushToPosition();
-                //var p3 = CreateListOfPoint<Point1D<int>>(20).PushToPosition();
+                var p1 = NE.Creator.CreatePosition<Point1D<int>>(CreateListOfPoint<Point1D<int>>(2).ToArray());
+                var p2 = NE.Creator.CreatePosition<Point1D<int>>(CreateListOfPoint<Point1D<int>>(2).ToArray());
 
+                var p3 = NE.Creator.CreatePosition<Point2D<int>>(CreateListOfPoint<Point2D<int>>(1).ToArray());
+                var p4 = NE.Creator.CreatePosition<Point2D<int>>(CreateListOfPoint<Point2D<int>>(1).ToArray());
 
+                var p5 = NE.Creator.CreatePosition<Point1D<int>>(CreateListOfPoint<Point1D<int>>(2).ToArray());
+                var p6 = NE.Creator.CreatePosition<Point1D<int>>(CreateListOfPoint<Point1D<int>>(2).ToArray());
 
-                //var m1 = new IContainer[] { p1, p2, p3 }.PushToMatrix();
-                //var m2 = new IContainer[] { p2, p3 }.PushToMatrix();
+                var p7 = NE.Creator.CreatePosition<Point2D<int>>(CreateListOfPoint<Point2D<int>>(1).ToArray());
+                var p8 = NE.Creator.CreatePosition<Point2D<int>>(CreateListOfPoint<Point2D<int>>(1).ToArray());
 
-                //var c1 = new IContainer[] { m1, m2 }.PushToContainer();
-                //var c2 = new IContainer[] { m2, m1 }.PushToContainer();
-
-                //var cs1 = new IContainer[] { c1, c2 }.PushToContainers();
-
-
-                //var m1 = CreateMatrix<Point2D<double>>(2, 3);
-                //var m2 = CreateMatrix<Point1D<double>>(2, 3);
-                //    var m3 = CreateMatrix<Point2D<double>>(2, 3);
-                //    var m4 = CreateMatrix<Point1D<double>>(2, 3);
-                //    var m5 = CreateMatrix<Point2D<double>>(2, 3);
-                //    var m6 = CreateMatrix<Point1D<double>>(2, 3);
-
-                //var c1 = Creator.CreateContainer(new IContainer[] {m1, m2});
-                //    var c2 = Creator.CreateContainer( m3, m4 );
-                //    var c3 = Creator.CreateContainer( m5, m6 );
-
-                //    var cs = Creator.CreateContainers( c1, c2, c3);
-
-                //    int cont = 1;
-
-                //    foreach (IContainer container in cs)
-                //    {
-                //        int mt = 1;
-                //        Console.WriteLine("Container {0}", cont);
-                //        foreach (IContainer matrix in container)
-                //        {
-                //            int ps = 1;
-                //            Console.WriteLine("\tMatrix {0}", mt);
-                //            foreach (IContainer position in matrix)
-                //            {
-                //                Console.WriteLine("\t\tPosition {0}", ps);
-                //                foreach (IPoint point in position)
-                //                {
-                //                    Console.WriteLine("\t\t\t" + point.ToString());
-                //                }
-                //                ps++;
-                //            }
-                //            mt++;
-                //        }
-                //        cont++;
-                //    }
-
-                var p1 = NE.Creator.CreatePosition<Point1D<int>>(CreateListOfPoint<Point1D<int>>(10).ToArray());
-                var p2 = NE.Creator.CreatePosition<Point1D<int>>(CreateListOfPoint<Point1D<int>>(10).ToArray());
-                var p3 = NE.Creator.CreatePosition<Point1D<int>>(CreateListOfPoint<Point1D<int>>(10).ToArray());
-                var p4 = NE.Creator.CreatePosition<Point1D<int>>(CreateListOfPoint<Point1D<int>>(10).ToArray());
-
-
-                var m1 = NE.Creator.CreateMatrix(p1,p2);
+                var m1 = NE.Creator.CreateMatrix(p1, p2);
                 var m2 = NE.Creator.CreateMatrix(p3, p4);
+                var m3 = NE.Creator.CreateMatrix(p5, p6);
+                var m4 = NE.Creator.CreateMatrix(p7, p8);
 
                 var c1 = NE.Creator.CreateContainer(m1, m2);
-                var c2 = NE.Creator.CreateContainer(m2, m1);
+                var c2 = NE.Creator.CreateContainer(m3, m4);
 
                 var cs = NE.Creator.CreateContainers(c1, c2);
-               // var n = cs[0][0][0][0];
+
+
+                int cont = 1;
+
+                foreach (var container in cs)
+                {
+                    int mt = 1;
+                    Console.WriteLine("Container {0}", cont);
+                    foreach (var matrix in container)
+                    {
+                        int ps = 1;
+                        Console.WriteLine("\tMatrix {0}", mt);
+                        foreach (var position in matrix)
+                        {
+                            Console.WriteLine("\t\tPosition {0}  {1}", ps, position.Count);
+                            foreach (var point in position)
+                            {
+                                Console.WriteLine("\t\t\t" + point.ToString());
+                            }
+                            ps++;
+                        }
+                        mt++;
+                    }
+                    cont++;
+                }
 
 
             }

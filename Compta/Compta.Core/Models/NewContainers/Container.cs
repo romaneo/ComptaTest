@@ -107,7 +107,7 @@ namespace Compta.Core.Models.NewContainers
         /// <returns></returns>
          IEnumerator<Matrix> IEnumerable<Matrix>.GetEnumerator()
         {
-            return _matrixList.Cast<Matrix>().GetEnumerator();
+            return _matrixList.GetEnumerator();
         }
 
         /// <summary>

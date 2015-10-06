@@ -79,7 +79,7 @@ namespace Compta.Core.Models.NewContainers
         /// <returns></returns>
         IEnumerator<IPointContainer> IEnumerable<IPointContainer>.GetEnumerator()
         {
-            return _positionList.Cast<IPointContainer>().GetEnumerator();
+            return _positionList.GetEnumerator();
         }
 
         /// <summary>
@@ -123,11 +123,11 @@ namespace Compta.Core.Models.NewContainers
         /// </summary>
         /// <param name="i">index of the element</param>
         /// <returns></returns>
-        public Position<IPoint> this[int i]
+        public IPointContainer this[int i]
         {
             get
             {
-                return (_positionList[i] as Position<IPoint>);
+                return (_positionList[i] );
             }
         }
 
