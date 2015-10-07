@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Compta.Core.Models;
-using Compta.Core.Models.Point;
-using NE = Compta.Core.Models.NewExtensions;
-using NC = Compta.Core.Models.NewContainers;
-using Compta.Core.Models.NewContainers;
-using Compta.Core.Models.NewExtensions;
+using Pmc.Core.Models.Point;
+using NE = Pmc.Core.Models.NewExtensions;
+using Pmc.Core.Models.NewContainers;
+using Pmc.Core.Models.NewExtensions;
 
 
-namespace Compta
+namespace Pmc
 {
     class Program
     {

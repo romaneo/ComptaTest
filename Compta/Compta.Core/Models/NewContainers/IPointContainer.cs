@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 
-namespace Compta.Core.Models.NewContainers
+namespace Pmc.Core.Models.NewContainers
 {
     public interface IPointContainer: IEnumerable
     {

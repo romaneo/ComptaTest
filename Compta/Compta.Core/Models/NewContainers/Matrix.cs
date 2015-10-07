@@ -1,12 +1,10 @@
-﻿using Compta.Core.Models.Point;
-using Compta.Core.Settings;
+﻿using Pmc.Core.Settings;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace Compta.Core.Models.NewContainers
+namespace Pmc.Core.Models.NewContainers
 {
     /// <summary>
     /// Represents a container of indexed collection of position

@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using Compta.Core.Models.Point;
-using Compta.Core.Models.NewContainers;
-using Compta.Core.Models.NewExtensions;
+using Pmc.Core.Models.Point;
+using Pmc.Core.Models.NewContainers;
+using Pmc.Core.Models.NewExtensions;
 
-namespace Compta.Tests.NewTests.Position_Tests
+namespace Pmc.Tests.NewTests.Position_Tests
 {
     [TestClass]
     public class Position_Tests

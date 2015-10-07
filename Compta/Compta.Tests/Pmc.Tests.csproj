@@ -60,13 +60,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Compta.Core\Compta.Core.csproj">
+    <ProjectReference Include="..\Compta.Core\Pmc.Core.csproj">
       <Project>{5c8fb74d-399b-4cb7-9ec5-df3a3ae3c5c3}</Project>
-      <Name>Compta.Core</Name>
+      <Name>Pmc.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Compta\Compta.csproj">
+    <ProjectReference Include="..\Compta\Pmc.csproj">
       <Project>{5536f2dc-fd3e-4da9-9a34-66c7c7e8ad2c}</Project>
-      <Name>Compta</Name>
+      <Name>Pmc</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

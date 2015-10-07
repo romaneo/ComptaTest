@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Compta.Core.Models.Point;
+using Pmc.Core.Models.Point;
 
-namespace Compta.Tests.NewTests
+namespace Pmc.Tests.NewTests
 {
     [TestClass]
     public class Points_Test

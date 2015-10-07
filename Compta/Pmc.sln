@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compta", "Compta\Compta.csproj", "{5536F2DC-FD3E-4DA9-9A34-66C7C7E8AD2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pmc", "Compta\Pmc.csproj", "{5536F2DC-FD3E-4DA9-9A34-66C7C7E8AD2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compta.Core", "Compta.Core\Compta.Core.csproj", "{5C8FB74D-399B-4CB7-9EC5-DF3A3AE3C5C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pmc.Core", "Compta.Core\Pmc.Core.csproj", "{5C8FB74D-399B-4CB7-9EC5-DF3A3AE3C5C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compta.Tests", "Compta.Tests\Compta.Tests.csproj", "{D9A13E36-1EC0-474F-B3EB-9B6C67D816E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pmc.Tests", "Compta.Tests\Pmc.Tests.csproj", "{D9A13E36-1EC0-474F-B3EB-9B6C67D816E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

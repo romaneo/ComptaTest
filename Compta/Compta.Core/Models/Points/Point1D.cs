@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Compta.Core.Settings;
+using Pmc.Core.Settings;
 
-namespace Compta.Core.Models.Point
+namespace Pmc.Core.Models.Point
 {
     public class Point1D<T> : IPoint
     {

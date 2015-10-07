@@ -1,11 +1,8 @@
-﻿using  Compta.Core.Models.NewContainers;
-using Compta.Core.Models.Point;
-using System;
-using System.Collections.Generic;
+﻿using Pmc.Core.Models.NewContainers;
+using Pmc.Core.Models.Point;
 using System.Linq;
-using System.Text;
 
-namespace Compta.Core.Models.NewExtensions
+namespace Pmc.Core.Models.NewExtensions
 {
     public static class Creator
     {
