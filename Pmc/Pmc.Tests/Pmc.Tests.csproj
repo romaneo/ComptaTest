@@ -6,8 +6,8 @@
     <ProjectGuid>{D9A13E36-1EC0-474F-B3EB-9B6C67D816E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Compta.Tests</RootNamespace>
-    <AssemblyName>Compta.Tests</AssemblyName>
+    <RootNamespace>Pmc.Tests</RootNamespace>
+    <AssemblyName>Pmc.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -60,11 +60,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Compta.Core\Pmc.Core.csproj">
+    <ProjectReference Include="..\Pmc.Core\Pmc.Core.csproj">
       <Project>{5c8fb74d-399b-4cb7-9ec5-df3a3ae3c5c3}</Project>
       <Name>Pmc.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Compta\Pmc.csproj">
+    <ProjectReference Include="..\Pmc\Pmc.csproj">
       <Project>{5536f2dc-fd3e-4da9-9a34-66c7c7e8ad2c}</Project>
       <Name>Pmc</Name>
     </ProjectReference>

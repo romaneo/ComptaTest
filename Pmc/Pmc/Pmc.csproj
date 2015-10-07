@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5C8FB74D-399B-4CB7-9EC5-DF3A3AE3C5C3}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{5536F2DC-FD3E-4DA9-9A34-66C7C7E8AD2C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Compta.Core</RootNamespace>
-    <AssemblyName>Compta.Core</AssemblyName>
+    <RootNamespace>Pmc</RootNamespace>
+    <AssemblyName>Pmc</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,21 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\NewContainers\Container.cs" />
-    <Compile Include="Models\NewContainers\Containers.cs" />
-    <Compile Include="Models\NewContainers\IContainer.cs" />
-    <Compile Include="Models\NewContainers\IPointContainer.cs" />
-    <Compile Include="Models\NewContainers\Matrix.cs" />
-    <Compile Include="Models\NewContainers\Position.cs" />
-    <Compile Include="Models\NewExtensions\Creator.cs" />
-    <Compile Include="Models\Points\IPoint.cs" />
-    <Compile Include="Models\Points\Point1D.cs" />
-    <Compile Include="Models\Points\Point2D.cs" />
-    <Compile Include="Models\Points\Point3D.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\Settings.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Pmc.Core\Pmc.Core.csproj">
+      <Project>{5c8fb74d-399b-4cb7-9ec5-df3a3ae3c5c3}</Project>
+      <Name>Pmc.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
